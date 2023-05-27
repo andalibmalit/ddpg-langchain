@@ -31,6 +31,8 @@ class Critic(nn.Module):
         """
         Params state and actions are torch tensors
         """
+        action = action.squeeze(1)
+
         x = torch.cat([state, action], 1)
         x = F.relu(self.linear1(x))
         x = F.relu(self.linear2(x))
